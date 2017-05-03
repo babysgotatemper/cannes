@@ -1,19 +1,78 @@
 $yellow: #f7de09;
+$black: #000;
 
+/*
+general
+*/
 
-//
-.title{
-  
-}
-
-//main styles
-body{
+body {
   background-color: #000;
   color: $yellow;
 }
 
-//header
-header{
+//popup
+._popup {
+  display: none;
+  position: fixed;
+  z-index: 888;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+}
+
+.popup-close {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 40px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+//button
+._btn{
+  border: 2px solid $yellow;
+  font-family: cedra;
+  text-transform: uppercase;
+  color: $yellow;
+}
+
+//section
+section {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 85px;
+  box-sizing: border-box;
+  overflow: hidden;
+  &.active {
+    display: block;
+  }
+}
+
+
+/*
+main styles
+*/
+
+
+/*
+header
+*/
+
+header {
+  position: fixed;
+  z-index: 666;
+  top: 0;
+  left: 0;
   border-bottom: 3px solid $yellow;
   display: flex;
   justify-content: space-between;
@@ -22,21 +81,24 @@ header{
   width: 100%;
   box-sizing: border-box;
 }
-nav{
+
+nav {
   color: #fff;
   font-weight: bold;
   font-size: 15px;
   text-transform: uppercase;
 }
-.social{
-  a{
+
+//social
+.social {
+  a {
     position: relative;
     width: 45px;
     height: 45px;
     display: inline-block;
-//    background-color: red;
+    //    background-color: red;
     margin: 0 10px;
-    &:before{
+    &:before {
       position: absolute;
       left: 10%;
       top: 10%;
@@ -44,11 +106,25 @@ nav{
       width: 75%;
       height: 75%;
       border: 2px solid #fff;
-      transform: rotate(45deg)
+      transform: rotate(45deg);
+      transition: all .5s;
+    }
+    &:hover:before {
+      transform: rotate(135deg);
+    }
+  }
+  &._auth {
+    a {
+      width: 65px;
+      height: 65px;
+      &:before {
+        border-color: $black
+      }
     }
   }
 }
-h1{
+
+h1 {
   width: 100%;
   margin: auto;
   max-width: 800px;
@@ -57,27 +133,137 @@ h1{
   font-size: 36px;
 }
 
-//section
-section{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-}
-.main{
+
+/*
+main
+*/
+
+.main {
   background: url(../img/bg-main.jpg) center no-repeat;
   background-size: cover;
+  text-align: center;
+}
+
+.test-start {
+  @extend ._btn;
+  font-size: 24px;
+  padding: 10px 35px;  
+}
+
+
+/*
+auth
+*/
+
+.authorization {
+  max-width: 680px;
+  max-height: 540px;
+  background-color: $yellow;
+  color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 24px;
+  line-height: 2;
+  text-transform: uppercase;
+}
+
+
+/*
+test
+*/
+
+//.test{
+//  top: 100px;
+//  padding: 0;
+//}
+.nomination {
+  width: 100%;
+  height: 100%;
+  display: none;
+  &:hover {
+    .nomination__item {
+      width: 15vw;
+    }
+  }
+}
+
+.film .nomination__item {
+  &:nth-child(1) {    background-image: url(../img/film1.jpg);  }
+  &:nth-child(2) {    background-image: url(../img/film2.jpg);  }
+  &:nth-child(3) {    background-image: url(../img/film3.jpg);  }
+  &:nth-child(4) {    background-image: url(../img/film4.jpeg);  }
+  &:nth-child(5) {    background-image: url(../img/film5.jpg);  }
+}
+.actress .nomination__item {
+  &:nth-child(1) {    background-image: url(../img/actress1.jpg);  }
+  &:nth-child(2) {    background-image: url(../img/actress2.jpg);  }
+  &:nth-child(3) {    background-image: url(../img/actress3.jpg);  }
+  &:nth-child(4) {    background-image: url(../img/actress4.jpeg);  }
+  &:nth-child(5) {    background-image: url(../img/actress5.jpg);  }
+}
+.actor .nomination__item {
+  &:nth-child(1) {    background-image: url(../img/actor1.jpg);  }
+  &:nth-child(2) {    background-image: url(../img/actor2.jpg);  }
+  &:nth-child(3) {    background-image: url(../img/actor3.jpg);  }
+  &:nth-child(4) {    background-image: url(../img/actor4.jpg); background-position: 80% center   }
+  &:nth-child(5) {    background-image: url(../img/actor5.jpg);  background-position: left center  }
+}
+.regiser .nomination__item {
+  &:nth-child(1) {    background-image: url(../img/regiser1.jpg);  }
+  &:nth-child(2) {    background-image: url(../img/regiser2.jpg);  }
+  &:nth-child(3) {    background-image: url(../img/regiser3.jpg);  }
+  &:nth-child(4) {    background-image: url(../img/regiser4.jpg);  }
+  &:nth-child(5) {    background-image: url(../img/regiser5.jpg);}
+}
+
+.auto .nomination__item {
+  &:nth-child(1) {    background-image: url(../img/auto1.jpg);  }
+  &:nth-child(2) {    background-image: url(../img/auto2.jpg);  }
+  &:nth-child(3) {    background-image: url(../img/auto3.jpg);  }
+  &:nth-child(4) {    background-image: url(../img/auto4.jpg);  }
+}
+
+.nomination__item {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  height: 100%;
+  padding-bottom: 20px;
+  width: 20vw;
+  float: left;
+  overflow: hidden;
+  transition: all .5s;
+  filter: grayscale(1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  &:hover {
+    width: 40vw !important;
+    filter: none;
+    .vote{
+      background-color: $yellow;
+      color: $black;
+    }
+  }
+}
+.nomination__info{
+  font-weight: 18px;
+  span{
+    display: block;
+  }
+}
+.vote{
+  @extend ._btn;
+  padding: 5px;
+  margin: 10px 0;
+  transition: all .5s;
 }
 
 //@media (max-width: 1280px) {}
-
 //@media (max-width: 1024px) {}
-
 //@media (max-width: 768px) {}
-
 //@media (max-width: 640px) {}
-
 //@media (max-width: 480px) {}
