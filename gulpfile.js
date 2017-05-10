@@ -81,8 +81,8 @@ gulp.task('build', ['clean', 'sass', 'scripts', 'img'], function () {
     var buildCss = gulp.src(['app/css/style.css', 'app/css/libs.min.css'])
         .pipe(gulp.dest('dist/css'))
 
-    var buildFonts = gulp.src('app/fonts/**/*')
-        .pipe(gulp.dest('dist/fonts'))
+    var buildFonts = gulp.src('app/font/**/*')
+        .pipe(gulp.dest('dist/font'))
 
     var buildFonts = gulp.src('app/media/**/*')
         .pipe(gulp.dest('dist/media'))
