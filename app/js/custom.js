@@ -3,22 +3,19 @@ $('.main').show();
 
 $(function () {
 	//  popup
+	$('.popup._send').hide();
 	$('.popup-close').click(function () {
-		$(this).closest('._popup').fadeOut();
+		$(this).closest('.popup').fadeOut();
 	});
 
 	$('.test-start').click(function () {
 		$('.authorization').fadeIn();
 	});
-	//  auth
-	$('.social._auth').click(function () {
-		$(this).closest('._popup').fadeOut();
-	});
 	//test
 	$('.vote').click(function () {
 		$(this).closest('.nomination').hide().next('.nomination').fadeIn();
 		if ($(this).closest('.nomination').hasClass('auto')) {
-			$('.authorization').fadeIn();
+			$('.popup._send').fadeIn();
 		}
 	})
 	
