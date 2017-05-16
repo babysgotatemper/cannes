@@ -24,8 +24,8 @@
     <![endif]-->
 	<!--mobile & IE9- support-->
 </head>
-
-<body>
+<!--todo ng-init="lang='ua'" - ініціалізація мови для російської введи ru-->
+<body ng-controller="chooseController" ng-init="lang='ru'">
 	<header>
 		<img src="../img/logo-reno.png" alt="" class="logo">
 		<nav>
@@ -51,8 +51,10 @@
 		<p>авторизироваться</p>
 		<div class="social _auth">
 			<!--для фото з соціалок-->
+<!--
 			<img ng-if="fbImgUrl" src="{{fbImgUrl}}">
 			<img ng-if="vkImgUrl" src="{{vkImgUrl}}">
+-->
 			<!--кнопки для логіну (якщо тре щоб логін був на іншій кнопці перенеси ng-click="vkLogin()" в потрібний елемент(<a>, <button> і тд)-->
 			<a href="#" ng-click="vkLogin()"><i>&#xf189;</i></a>
 			<a href="#" ng-click="fbLogin()"><i>&#xf09a;</i></a>
