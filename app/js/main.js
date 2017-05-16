@@ -30,14 +30,14 @@
         //auth init
         VK.init({
              apiId: 6032114 // semak app
-            //apiId: 5660830 //test app
+            // apiId: 5660830 //test app
         });
         VK.Widgets.Auth('vk_auth', {});
 
         $window.fbAsyncInit = function () {
             FB.init({
                  appId: '932980976842235',
-                //appId: '1310527085646322',//test app
+                // appId: '1310527085646322',//test app
                 status: true,
                 cookie: true,
                 xfbml: true,
@@ -55,7 +55,7 @@
             regiser: 0,
             style: 0
         };
-        var isAuth = false;
+        $scope.isAuth = false;
         var langResources = {
             votes: {
                 ua: {
@@ -136,7 +136,7 @@
 
                     })
                 });
-                isAuth = true;
+                $scope.isAuth = true;
             } else {
                 Notification.error({message: '', delay: 1500})
             }
@@ -170,7 +170,7 @@
 
                         });
                     }, 1000);
-                    isAuth = true;
+                    $scope.isAuth = true;
                 });
 
             } else if (response.status === 'not_authorized') {
@@ -191,12 +191,17 @@
 
 
         function sendResults() {
-            if (!isAuth) {
+            if (!$scope.isAuth) {
                 Notification.error({message: langResources.errors[$scope.lang].notAuth, delay: 1500});
                 return;
             }
             $http.post('/storeVote.php', $scope.chooseObj).then(function (resp) {
-                console.log(resp);
+                if($scope.lang == 'ua'){
+                    alert('Ваш вибір збережено');
+                }
+                if($scope.lang == 'ru'){
+                    alert('Ваш выбор сохранен');
+                }
             }, function (err) {
 
             });
