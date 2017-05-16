@@ -16,7 +16,8 @@ $request = json_decode($postdata, true);
  * }
  */
 session_start();
-$conn = new PDO("mysql:host=localhost;dbname=cannes", 'root', 'kleban12');
+//$conn = new PDO("mysql:host=localhost;dbname=cannes", 'root', 'kleban12');//Prod DB
+$conn = new PDO("mysql:host=192.168.212.116;dbname=cannes", 'cannes', 'dBCw-ue82-nss');//local DB
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $conn->exec("set names utf8");
 $stmt = $conn->prepare("UPDATE `users`   

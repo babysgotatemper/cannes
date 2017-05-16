@@ -35,7 +35,10 @@ gulp.task('browser-sync', function () {
 gulp.task('scripts', function () {
 	return gulp.src([
 			'app/libs/jquery/dist/jquery.min.js',
-			'app/libs/slick-carousel/slick/slick.js'])
+			'app/libs/slick-carousel/slick/slick.js',
+		'app/libs/angular/angular.min.js',
+		'app/libs/angular-ui-notification/dist/angular-ui-notification.min.js'
+	])
 		.pipe(concat('libs.min.js'))
 		//        .pipe(uglify())
 		.pipe(gulp.dest('app/js'));

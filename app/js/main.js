@@ -29,15 +29,15 @@
     function runBlock($window) {
         //auth init
         VK.init({
-            // apiId: 6032114 // semak app
-            apiId: 5660830
+             apiId: 6032114 // semak app
+            //apiId: 5660830 //test app
         });
         VK.Widgets.Auth('vk_auth', {});
 
         $window.fbAsyncInit = function () {
             FB.init({
-                // appId: '932980976842235',//
-                appId: '1310527085646322',
+                 appId: '932980976842235',
+                //appId: '1310527085646322',//test app
                 status: true,
                 cookie: true,
                 xfbml: true,
@@ -59,18 +59,18 @@
         var langResources = {
             votes: {
                 ua: {
-                    film: ['Фільм 1', 'Фільм 2', 'Фільм 3', 'Фільм 4', 'Фільм 5'],
-                    actress: ['Актриса 1', 'Актриса 2', 'Актриса 3', 'Актриса 4', 'Актриса 5'],
-                    actor: ['Актор 1', 'Актор 2', 'Актор 3', 'Актор 4', 'Актор 5'],
-                    regiser: ['Режисер 1', 'Режисер 2', 'Режисер 3', 'Режисер 4', 'Режисер 5'],
-                    style: ['Стиль 1', 'Стиль 2', 'Стиль 3', 'Стиль 4', 'Стиль 5']
+                    film: ['"Дволикий коханець"', '"Окча"', '“Світ повний чудес”', '“Світло”', '“Роден”'],
+                    actress: ['Джуліан Мур', 'Тільда Свінтон', 'Маріон Котіяр', 'Ніколь Кідман', 'Шарлотта Генсбур'],
+                    actor: ['Венсан Лендон', 'Колін Фаррел', 'Роберт Паттінсон', 'Адам Сендлер', 'Бен Стіллер'],
+                    regiser: ['Софія Коппола', 'Мішель Хазанавічус', 'Сергій Лозниця', 'Міхаель Ханеке', 'Пон Чжу Хо'],
+                    style: ['Renault Kadjar', 'Renault Captur', 'Renault Megane', 'Renault Logan', '']
                 },
                 ru: {
-                    film: ['', '', '', '', ''],
-                    actress: ['', '', '', '', ''],
-                    actor: ['', '', '', '', ''],
-                    regiser: ['', '', '', '', ''],
-                    style: ['', '', '', '', '']
+                    film: ['"Двойной любовник"', '"Окча"', '“Мир, полный чудес”', '“Свет”', '“Роден”'],
+                    actress: ['Джулиана Мур', 'Тильда Суинтон', 'Марион Котияр', 'Николь Кидман', 'Шарлотта Генсбур'],
+                    actor: ['Венсан Линдон', 'Колин Фаррел', 'Роберт Паттинсон', 'Адам Сендлер', 'Бэн Cтиллер'],
+                    regiser: ['София Коппола', 'Мишель Хазанавичус', 'Сергей Лозница', 'Михаэль Ханеке', 'Пон Чжу Хо'],
+                    style: ['Renault Kadjar', 'Renault Captur', 'Renault Megane', 'Renault Logan', '']
                 }
             },
             share:{
@@ -203,14 +203,14 @@
         }
 
         function shareVk() {
-            var fbDescription = langResources.share[$scope.lang].voteFilm +langResources.votes[$scope.lang].film[$scope.chooseObj.film - 1] + ' '+
-                langResources.share[$scope.lang].voteActor +langResources.votes[$scope.lang].actor[$scope.chooseObj.actor - 1] + ' '+
-                langResources.share[$scope.lang].voteActress +langResources.votes[$scope.lang].actress[$scope.chooseObj.actress - 1] + ' '+
-                langResources.share[$scope.lang].voteRegiser +langResources.votes[$scope.lang].regiser[$scope.chooseObj.regiser - 1] + ' '+
+            var fbDescription = langResources.share[$scope.lang].voteFilm +langResources.votes[$scope.lang].film[$scope.chooseObj.film - 1] + '. '+
+                langResources.share[$scope.lang].voteActor +langResources.votes[$scope.lang].actor[$scope.chooseObj.actor - 1] + '. '+
+                langResources.share[$scope.lang].voteActress +langResources.votes[$scope.lang].actress[$scope.chooseObj.actress - 1] + '. '+
+                langResources.share[$scope.lang].voteRegiser +langResources.votes[$scope.lang].regiser[$scope.chooseObj.regiser - 1] + '. '+
                 langResources.share[$scope.lang].voteStyle +langResources.votes[$scope.lang].style[$scope.chooseObj.style - 1];
 
             var params = {
-                url: 'http://cannes.l/test.htm',
+                url: 'http://renault-cannes.korrespondent.net/test.htm',
                 title: langResources.share[$scope.lang].title
             };
 
@@ -220,13 +220,13 @@
 
         function shareFB() {
             //todo make description
-            var fbDescription = langResources.share[$scope.lang].voteFilm +langResources.votes[$scope.lang].film[$scope.chooseObj.film - 1] + ' '+
-                langResources.share[$scope.lang].voteActor +langResources.votes[$scope.lang].actor[$scope.chooseObj.actor - 1] + ' '+
-                langResources.share[$scope.lang].voteActress +langResources.votes[$scope.lang].actress[$scope.chooseObj.actress - 1] + ' '+
-                langResources.share[$scope.lang].voteRegiser +langResources.votes[$scope.lang].regiser[$scope.chooseObj.regiser - 1] + ' '+
+            var fbDescription = langResources.share[$scope.lang].voteFilm +langResources.votes[$scope.lang].film[$scope.chooseObj.film - 1] + '. '+
+                langResources.share[$scope.lang].voteActor +langResources.votes[$scope.lang].actor[$scope.chooseObj.actor - 1] + '. '+
+                langResources.share[$scope.lang].voteActress +langResources.votes[$scope.lang].actress[$scope.chooseObj.actress - 1] + '. '+
+                langResources.share[$scope.lang].voteRegiser +langResources.votes[$scope.lang].regiser[$scope.chooseObj.regiser - 1] + '. '+
                 langResources.share[$scope.lang].voteStyle +langResources.votes[$scope.lang].style[$scope.chooseObj.style - 1];
             var params = {
-                u: 'http://cannes.l/test.htm',
+                u: 'http://renault-cannes.korrespondent.net/test.htm',
                 description: fbDescription,
                 caption: langResources.share[$scope.lang].title
             };

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
 
 <head>
 	<meta charset="UTF-8">
@@ -162,7 +162,7 @@
 				<div class="nomination__item">
 					<button class="read-more" data-btn="family"></button>
 					<p class="nomination__info">
-						<span>Бэн стиллер</span> “История семьи Майровиц” <button class="vote" ng-click="choose(5, 'actor')">проголосовать</button>
+						<span>Бэн Cтиллер</span> “История семьи Майровиц” <button class="vote" ng-click="choose(5, 'actor')">проголосовать</button>
 					</p>
 				</div>
 			</div>
@@ -467,26 +467,6 @@
 	<div style="display: none;" id="vk_auth"></div>
 
 	<script src="//vk.com/js/api/openapi.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		//vk
-		var social_net = '';
-		VK.init({
-			apiId: 5660830
-		});
-		var user = '';
-		VK.Widgets.Auth('vk_auth', {});
-
-		function authInfo(response) {
-			if (response.session) {
-				user = response.session.user;
-				social_net = '/saveVK.php';
-				console.log('auth');
-			} else {
-				console.log('not auth');
-			}
-		}
-		VK.UI.button('login_button');
-	</script>
 
 	<!--fb auth-->
 	<script>
@@ -502,6 +482,7 @@
 	</script>
 	<script src="../js/libs.min.js"></script>
 	<script src="../js/custom.js"></script>
+	<script src="../js/main.js"></script>
 
 </body>
 
