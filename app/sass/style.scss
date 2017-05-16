@@ -50,7 +50,7 @@ i {
 	top: 50%;
 	transform: translate(-50%, -50%);
 	width: 100%;
-	height: 100%;	
+	height: 100%;
 	max-width: 680px;
 	max-height: 540px;
 	background-color: $yellow;
@@ -144,6 +144,8 @@ nav {
 	text-transform: uppercase;
 	a {
 		margin: 0 5px;
+		transition: transform .3s;
+		display: inline-block;
 		&.lang {
 			margin-left: 10px;
 			font-family: 'cedra';
@@ -151,6 +153,9 @@ nav {
 				content: '|';
 				margin-right: 5px;
 			}
+		}
+		&:hover {
+			transform: scale(1.1, 1.1);
 		}
 	}
 }
@@ -196,7 +201,7 @@ nav {
 
 h3 {
 	width: 100%;
-	margin: auto;
+	margin: 0 auto;
 	max-width: 800px;
 	text-transform: uppercase;
 	text-align: center;
@@ -205,7 +210,7 @@ h3 {
 
 h4 {
 	width: 100%;
-	margin: auto;
+	margin: 0 auto;
 	max-width: 650px;
 	text-transform: uppercase;
 	text-align: center;
@@ -223,19 +228,21 @@ main
 */
 
 .main {
-	position: absolute;
+	position: fixed;
 	top: $top;
 	left: 0;
 	bottom: 0;
 	width: 100%;
+	height: 100%;
 	text-align: center;
+	padding-top: 50px;
 	padding-bottom: 100px;
 	box-sizing: border-box;
 	font-weight: lighter;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 }
 
 .test-start {
@@ -291,10 +298,10 @@ main
 
 .nominations {
 	display: block;
-	position: absolute;
-	transform: translateX(-50%);
-	bottom: 0;
-	left: 50%;
+	//	position: absolute;
+	//	transform: translateX(-50%);
+	//	bottom: 0;
+	//	left: 50%;
 	width: 1000px;
 }
 
@@ -322,6 +329,24 @@ main
 	}
 }
 
+.nomination__btn {
+	top: 50%;
+	position: absolute;
+	margin-top: -88px;
+	z-index: 100;
+	width: 88px;
+	height: 88px;
+	background: rgba(0, 0, 0, 0.52) url(../img/arrow2.png) center no-repeat;
+	cursor: pointer;
+	&._left {
+		left: 10px;
+		transform: rotate(180deg)
+	}
+	&._right {
+		right: 10px;
+	}
+}
+
 
 /*
 test
@@ -336,7 +361,11 @@ test
 	bottom: 0;
 	right: 0;
 	padding: 0;
-	padding-bottom: 100px;
+	padding-bottom: 87px;
+}
+
+.test-nomination .vote {
+	display: none;
 }
 
 .nomination {
@@ -456,12 +485,15 @@ test
 	width: 20vw;
 	float: left;
 	overflow: hidden;
-	transition: all .5s;
+	transition: all .3s;
 	filter: grayscale(1);
 	//	display: flex;
 	//	flex-direction: column;
 	//	justify-content: flex-end;
 	//	align-items: center;
+	div {
+		display: none;
+	}
 	&:after {
 		position: absolute;
 		z-index: 5;
@@ -475,7 +507,30 @@ test
 	&:hover {
 		width: 40vw !important;
 		filter: none;
+		.read-more{
+			display: block
+		}
 	}
+}
+
+
+.ua .read-more:before{
+	content: 'детальніше';
+}
+.ru .read-more:before{
+	content: 'подробнее';
+}
+.read-more{
+	display: none;
+	position: absolute;
+	top: 50px;
+	right: 0;
+	background-color: $yellow;
+	font-size: 18px;
+	padding: 5px 10px;
+	color: #000;
+	font-family: 'cedra';
+	font-weight: normal;
 }
 
 
@@ -500,7 +555,7 @@ test
 	left: 50%;
 	margin-left: -100px;
 	z-index: 100;
-	font-weight: 18px;
+	font-weight: 20px;
 	span {
 		display: block;
 	}
@@ -509,15 +564,95 @@ test
 .vote {
 	@extend ._btn;
 	width: 100%;
-	padding: 5px;
+	padding: 6px 0;
 	margin: 10px 0;
 	transition: all .5s;
 	font-family: 'cedra';
+	font-size: 18px;
 	&:hover {
 		background-color: $yellow;
 		color: $black;
 	}
 }
+
+
+/*nomination popup*/
+
+.nomination-popup {
+	padding: 20px 0;
+	box-sizing: border-box;
+	position: fixed;
+	z-index: 900;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	color: $yellow;
+	line-height: 1.2;
+	overflow-y: scroll;
+	display: none;
+}
+
+.nomination-popup__wrap {
+	//	width: 100%;
+	width: 750px;
+	margin: auto;
+	iframe {
+		display: block;
+		width: 100%;
+		height: 400px;
+	}
+	hr{
+		height: 2px;
+		width: 60%;
+		border-color: $yellow ;
+		background-color: $yellow;
+		text-align: left;
+		margin: 30px 0;
+	}
+}
+
+.nomination-popup__close{
+	color: $yellow;
+	position: absolute;
+	top: 0;
+	right: 10px;
+	font-size: 40px;
+	line-height: 1;
+}
+
+.nomination-popup__title {
+	font-family: 'cedra';
+	font-size: 40px;
+	line-height: 1.5;
+	font-weight: normal;
+}
+
+.ua .nomination-popup__rej:before {
+	content: 'Режисер:'
+}
+.ru .nomination-popup__rej:before {
+	content: 'Режисcер:'
+}
+.nomination-popup__roles:before{
+	content: 'В ролях:'
+}
+.nomination-popup__rej,
+.nomination-popup__roles {
+	padding-left: 100px;
+	position: relative;
+	font-size: 18px;
+	&:before {
+		position: absolute;
+		left: 0px;
+//		text-transform: uppercase;
+		font-weight: normal;
+	}
+}
+
 
 
 /*
@@ -706,6 +841,11 @@ rules
 	font-weight: bold;
 	p {
 		margin: 10px 0;
+		font-family: 'cedra';
+		&:before {
+			content: '•';
+			margin-right: 10px;
+		}
 	}
 }
 

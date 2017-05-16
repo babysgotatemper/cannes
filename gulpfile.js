@@ -33,9 +33,9 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src(['app/libs/jquery/dist/jquery.min.js', 'app/libs/slick-carousel/slick/slick.js'])
+    return gulp.src(['app/libs/jquery/dist/jquery.min.js', 'app/libs/slick-carousel/slick/slick.js', 'app/libs/angular/angular.js', 'app/libs/angular-ui-notification/dist/angular-ui-notification.js', 'app/js/main.js'])
         .pipe(concat('libs.min.js'))
-        .pipe(uglify())
+//        .pipe(uglify())
         .pipe(gulp.dest('app/js'));
 });
 
@@ -90,7 +90,7 @@ gulp.task('build', ['clean', 'sass', 'scripts', 'img'], function () {
     var buildJs = gulp.src('app/js/**/*')
         .pipe(gulp.dest('dist/js'))
 
-    var buildHtml = gulp.src('app/*.html')
+    var buildHtml = gulp.src('app/**/*.html')
         .pipe(gulp.dest('dist'));
 
 });
