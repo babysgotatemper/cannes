@@ -100,6 +100,9 @@ gulp.task('build', ['clean', 'sass', 'scripts', 'img'], function () {
 
 	var buildPhp = gulp.src('app/**/*.php')
 		.pipe(gulp.dest('dist'));
+  
+  var buildSql = gulp.src('app/**/*.sql')
+		.pipe(gulp.dest('dist'));
 
 });
 
