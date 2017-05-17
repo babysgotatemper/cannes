@@ -264,7 +264,7 @@ main
 	text-align: left;
 	font-size: 24px;
 	text-transform: uppercase;
-	width: 300px;
+	width: 320px;
 	display: flex;
 	align-items: center;
 	margin-right: 80px;
@@ -289,6 +289,7 @@ main
 		}
 	}
 	&._hoax {
+		align-items: flex-start;
 		margin: 0 100px;
 		&:after {
 			display: none;
