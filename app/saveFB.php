@@ -1,7 +1,7 @@
 <?php
-/*ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);*/
+error_reporting(E_ALL);
 
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata, true);
@@ -36,10 +36,20 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $conn->exec("set names utf8");
 $stmt = $conn->prepare("INSERT INTO users (full_name, first_name, last_name, email, photo_url, social_id, profile_link, profile_type, metadata)
 VALUES (:full_name, :first_name, :last_name, :email, :photo_url, :social_id, :profile_link, :profile_type, :metadata)");
+
+//validations
+if(!isset($request['first_name'])){ $request['first_name'] = '';}
+if(!isset($request['last_name'])){ $request['last_name'] = '';}
+if(!isset($request['name'])){ $request['name'] = '';}
+if(!isset($request['email'])){ $request['email'] = '';}
+if(!isset($request['link'])){ $request['link'] = '';}
+if(!isset($request['id'])){ echo 'wrong data'; exit;}
+
 $user_full_name = $request['first_name'] . ' ' . $request['last_name'];
 $user_photo_url = 'https://graph.facebook.com/' . $request['id'] . '/picture?type=large';
 $user_profile_type = 'FB';
 $user_metadata = json_encode($request);
+
 
 $stmt->bindParam(':full_name', $request['name']);
 $stmt->bindParam(':first_name', $request['first_name']);

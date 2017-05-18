@@ -24,10 +24,21 @@ $stmt = $conn->prepare("UPDATE `users`
    SET `vote_film` = :vote_film, `vote_actress` = :vote_actress, `vote_actor` = :vote_actor, `vote_regiser` = :vote_regiser, `vote_style` = :vote_style 
  WHERE `id` = :id ");
 
-$id = (int)$_SESSION['lastId'];
+if(isset($_SESSION['lastId'])){
+    $id = (int)$_SESSION['lastId'];
+} else {
+    echo 'unauthorized';exit;
+}
 
 
 if(isset($request)){
+    //validations
+    if(!isset($request['film'])){ $request['film'] = 0;}
+    if(!isset($request['actress'])){ $request['actress'] = 0;}
+    if(!isset($request['actor'])){ $request['vote_actor'] = 0;}
+    if(!isset($request['regiser'])){ $request['regiser'] = 0;}
+    if(!isset($request['style'])){ $request['style'] = 0;}
+
     $stmt->bindParam(':vote_film', $request['film']);
     $stmt->bindParam(':vote_actress', $request['actress']);
     $stmt->bindParam(':vote_actor', $request['actor']);

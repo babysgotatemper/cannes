@@ -27,12 +27,17 @@
     }
 
     function runBlock($window) {
-        //auth init
-        VK.init({
-             apiId: 6032114 // semak app
-            // apiId: 5660830 //test app
-        });
-        VK.Widgets.Auth('vk_auth', {});
+        try {
+            //auth init
+            VK.init({
+                // apiId: 6032114 // semak app
+                apiId: 5660830 //test app
+            });
+            VK.Widgets.Auth('vk_auth', {});
+        }
+        catch(err) {
+            console.log('No Vk connection')
+        }
 
         $window.fbAsyncInit = function () {
             FB.init({
